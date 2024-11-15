@@ -1,0 +1,93 @@
+#!/bin/bash
+r1=$RANDOM
+save () { printf "saving" ; }
+quack1 () { squeue -ao %all | tail -n +2 | sort -t"|" -dk28,28 | awk -F '|' '{ if($46 == "RUNNING") {if($21 == "handyca") { if ($42 == "gpu_lucdh") { system("tput setaf 9; tput setab 3;") } else if ($42 == "amd-short") { system("tput setaf 3; tput setab 5;"); } else if ($42 == "cpu-short") { system("tput setaf 0; tput setab 5;") } else { system("tput setaf 3; tput setab 6;") } } else { system("tput setaf 2; tput setab 4;"); }  printf(" %3.3s ", $21); system("tput sgr0;"); }}'; echo ""; } ;
+quack2 () { squeue -ao %all | tail -n +2 | sort -u -t"|" -dk21,21 | awk -F '|' '{ if($46) {if($21 == "handyca") { system("tput setaf 3; tput setab 5;"); } else { system("tput setaf 2; tput setab 0;"); }  printf("  %16.16s  ", $21); }}'; echo ""; } ;
+recto1 () { tput cup "$(echo $ycsr1)" "$(echo $xcsr1)"; echo "$xcsr1 $ycsr1"; 
+tput setab $r1
+tput cup "$(echo $((ycsr1+1)))" "$(echo $xcsr1)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr1+2)))" "$(echo $xcsr1)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr1+3)))" "$(echo $xcsr1)"; echo $(date); 
+tput setab $ab; }
+
+recto2 () { tput cup "$(echo $ycsr2)" "$(echo $xcsr2)"; echo "$xcsr2 $ycsr2"; 
+tput cup "$(echo $((ycsr2+1)))" "$(echo $xcsr2)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr2+2)))" "$(echo $xcsr2)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr2+3)))" "$(echo $xcsr2)"; echo $(date); }
+
+recto3 () { tput cup "$(echo $ycsr3)" "$(echo $xcsr3)"; echo "$xcsr3 $ycsr3"; 
+tput cup "$(echo $((ycsr3+1)))" "$(echo $xcsr3)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr3+2)))" "$(echo $xcsr3)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr3+3)))" "$(echo $xcsr3)"; echo $(date); }
+
+recto4 () { tput cup "$(echo $ycsr4)" "$(echo $xcsr4)"; echo "$xcsr4 $ycsr4"; 
+tput cup "$(echo $((ycsr4+1)))" "$(echo $xcsr4)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr4+2)))" "$(echo $xcsr4)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr4+3)))" "$(echo $xcsr4)"; echo $(date); }
+
+recto5 () { tput cup "$(echo $ycsr5)" "$(echo $xcsr5)"; echo "$xcsr5 $ycsr5"; 
+tput cup "$(echo $((ycsr5+1)))" "$(echo $xcsr5)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr5+2)))" "$(echo $xcsr5)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr5+3)))" "$(echo $xcsr5)"; echo $(date); }
+
+recto6 () { tput cup "$(echo $ycsr6)" "$(echo $xcsr6)"; echo "$xcsr6 $ycsr6"; 
+tput cup "$(echo $((ycsr6+1)))" "$(echo $xcsr6)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr6+2)))" "$(echo $xcsr6)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr6+3)))" "$(echo $xcsr6)"; echo $(date); }
+
+recto7 () { tput cup "$(echo $ycsr7)" "$(echo $xcsr7)"; echo "$xcsr7 $ycsr7"; 
+tput cup "$(echo $((ycsr7+1)))" "$(echo $xcsr7)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr7+2)))" "$(echo $xcsr7)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr7+3)))" "$(echo $xcsr7)"; echo $(date); }
+
+recto8 () { tput cup "$(echo $ycsr8)" "$(echo $xcsr8)"; echo "$xcsr8 $ycsr8"; 
+tput cup "$(echo $((ycsr8+1)))" "$(echo $xcsr8)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr8+2)))" "$(echo $xcsr8)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr8+3)))" "$(echo $xcsr8)"; echo $(date); }
+
+recto9 () { tput cup "$(echo $ycsr9)" "$(echo $xcsr9)"; echo "$xcsr9 $ycsr9"; 
+tput cup "$(echo $((ycsr9+1)))" "$(echo $xcsr9)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr9+2)))" "$(echo $xcsr9)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr9+3)))" "$(echo $xcsr9)"; echo $(date); }
+
+recto10 () { tput cup "$(echo $ycsr10)" "$(echo $xcsr10)"; echo "$xcsr10 $ycsr10"; 
+tput cup "$(echo $((ycsr10+1)))" "$(echo $xcsr10)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr10+2)))" "$(echo $xcsr10)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr10+3)))" "$(echo $xcsr10)"; echo $(date); }
+
+af=$RANDOM; ab=$RANDOM; tput setaf $af; tput setab $ab;
+xcsr1=$RANDOM;ycsr1=$RANDOM;
+xcsr1=0;ycsr1=0;
+xcsr2=$RANDOM;ycsr2=$RANDOM;
+xcsr3=$RANDOM;ycsr3=$RANDOM;
+xcsr4=$RANDOM;ycsr4=$RANDOM;
+xcsr5=$RANDOM;ycsr5=$RANDOM;
+xcsr6=$RANDOM;ycsr6=$RANDOM;
+xcsr7=$RANDOM;ycsr7=$RANDOM;
+xcsr8=$RANDOM;ycsr8=$RANDOM;
+xcsr9=$RANDOM;ycsr9=$RANDOM;
+xcsr10=$RANDOM;ycsr10=$RANDOM;
+
+while [ "$ky" != "q" ];do clear;
+recto1;
+#recto2;
+#recto3;
+#recto4;
+#recto5;
+#recto6;
+#recto7;
+#recto8;
+#recto9;
+#recto10;
+read -sn1 -t 60 ky;
+read -sn1 -t 0.0001 a;read -sn1 -t 0.0001 b;read -sn1 -t 0.0001 c;
+ky+=${a}${b}${c}; case "$ky" in
+    $'\e[A'|$'\e0A')((cur > 1)) && ((cur--)); ycsr1=$((ycsr1-1));;
+    $'\e[D'|$'\e0D')((cur > 1)) && ((cur--)); xcsr1=$((xcsr1-1));;
+    $'\e[B'|$'\e0B')((cur < $#-1)) && ((cur++)); ycsr1=$((ycsr1+1));;
+    $'\e[C'|$'\e0C')((cur < $#-1)) && ((cur++)); xcsr1=$((xcsr1+1));;
+    k)echo Kwak...; quack1; tput sgr0; exit;;
+    l)echo Kwak2...; quack2; tput sgr0; exit;;
+    r)echo Rand...; af=$RANDOM; ab=$RANDOM; tput setaf $af; tput setab $ab;;
+    s)echo Saving...; save; tput sgr0; exit;;
+    q)echo Bye!; tput sgr0; exit;; esac; done

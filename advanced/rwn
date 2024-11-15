@@ -1,0 +1,22 @@
+#!/bin/bash
+save () { printf "saving" ; }
+quack1 () { squeue -ao %all | tail -n +2 | sort -t"|" -dk28,28 | awk -F '|' '{ if($46 == "RUNNING") {if($21 == "handyca") { if ($42 == "gpu_lucdh") { system("tput setaf 9; tput setab 3;") } else if ($42 == "amd-short") { system("tput setaf 3; tput setab 5;"); } else if ($42 == "cpu-short") { system("tput setaf 0; tput setab 5;") } else { system("tput setaf 3; tput setab 6;") } } else { system("tput setaf 2; tput setab 4;"); }  printf(" %3.3s ", $21); system("tput sgr0;"); }}'; echo ""; } ;
+quack2 () { squeue -ao %all | tail -n +2 | sort -u -t"|" -dk21,21 | awk -F '|' '{ if($46) {if($21 == "handyca") { system("tput setaf 3; tput setab 5;"); } else { system("tput setaf 2; tput setab 0;"); }  printf("  %16.16s  ", $21); }}'; echo ""; } ;
+recto () { tput cup "$(echo $ycsr)" "$(echo $xcsr)"; echo "$xcsr $ycsr"; 
+tput cup "$(echo $((ycsr+1)))" "$(echo $xcsr)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr+2)))" "$(echo $xcsr)"; echo $( ls | head -c20 );
+tput cup "$(echo $((ycsr+3)))" "$(echo $xcsr)"; echo $(date); }
+
+af=$RANDOM; ab=$RANDOM; tput setaf $af; tput setab $ab;
+xcsr=0;ycsr=0;while [ "$ky" != "q" ];do clear; recto; read -sn1 -t 60 ky;
+read -sn1 -t 0.0001 a;read -sn1 -t 0.0001 b;read -sn1 -t 0.0001 c;
+ky+=${a}${b}${c}; case "$ky" in
+    $'\e[A'|$'\e0A')((cur > 1)) && ((cur--)); ycsr=$((ycsr-1));;
+    $'\e[D'|$'\e0D')((cur > 1)) && ((cur--)); xcsr=$((xcsr-1));;
+    $'\e[B'|$'\e0B')((cur < $#-1)) && ((cur++)); ycsr=$((ycsr+1));;
+    $'\e[C'|$'\e0C')((cur < $#-1)) && ((cur++)); xcsr=$((xcsr+1));;
+    k)echo Kwak...; quack1; tput sgr0; exit;;
+    l)echo Kwak2...; quack2; tput sgr0; exit;;
+    r)echo Rand...; af=$RANDOM; ab=$RANDOM; tput setaf $af; tput setab $ab;;
+    s)echo Saving...; save; tput sgr0; exit;;
+    q)echo Bye!; tput sgr0; exit;; esac; done

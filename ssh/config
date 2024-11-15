@@ -1,0 +1,11 @@
+Host hpc1
+  HostName login1.alice.universiteitleiden.nl
+  User handyca
+  ProxyJump handyca@ssh-gw.alice.universiteitleiden.nl:22
+  ServerAliveInterval 60
+
+Host hpc2
+  HostName login2.alice.universiteitleiden.nl
+  User handyca
+  ProxyJump handyca@ssh-gw.alice.universiteitleiden.nl:22
+  ServerAliveInterval 60
