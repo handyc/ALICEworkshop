@@ -1,2 +1,2 @@
 # ALICEworkshop
-15 Nov 2024 ALICE Workshop at Leiden University
+repository for various ALICE-related things at Leiden University
